@@ -19,8 +19,8 @@ class DateTimePicker(DateTimeInput):
     class Media:
         class JsFiles(object):
             def __iter__(self):
-                yield 'bootstrap3_datetime/js/moment.min.js'
-                yield 'bootstrap3_datetime/js/bootstrap-datetimepicker.min.js'
+                yield 'bootstrap4_datetime/js/moment.min.js'
+                yield 'bootstrap4_datetime/js/bootstrap-datetimepicker.min.js'
                 lang = translation.get_language()
                 if lang:
                     lang = lang.lower()
@@ -45,10 +45,10 @@ class DateTimePicker(DateTimeInput):
                     if len(lang) > 2:
                         lang = lang_map.get(lang, 'en-us')
                     if lang not in ('en', 'en-us'):
-                        yield 'bootstrap3_datetime/js/locales/bootstrap-datetimepicker.%s.js' % (lang)
+                        yield 'bootstrap4_datetime/js/locales/bootstrap-datetimepicker.%s.js' % (lang)
 
         js = JsFiles()
-        css = {'all': ('bootstrap3_datetime/css/bootstrap-datetimepicker.min.css',), }
+        css = {'all': ('bootstrap4_datetime/css/bootstrap-datetimepicker.min.css',), }
 
     # http://momentjs.com/docs/#/parsing/string-format/
     # http://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
