@@ -77,10 +77,10 @@ THE SOFTWARE.
         },
 
 		icons = {
-		    time: 'glyphicon glyphicon-time',
-		    date: 'glyphicon glyphicon-calendar',
-		    up: 'glyphicon glyphicon-chevron-up',
-		    down: 'glyphicon glyphicon-chevron-down'
+		    time: 'fa fa-clock-o',
+		    date: 'fa fa-calendar',
+		    up: 'fa fa-caret-up',
+		    down: 'fa fa-caret-down'
 		},
 
         picker = this,
