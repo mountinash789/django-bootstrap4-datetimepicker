@@ -18,13 +18,13 @@ except ImportError:  # python3
 class DateTimePicker(DateTimeInput):
     class Media:
         class JsFiles(object):
-            def __iter__(self):
-                yield 'bootstrap4_datetime/js/moment.min.js'
-                yield 'bootstrap4_datetime/js/bootstrap-datetimepicker.min.js'
+            def __init__(self):
+                self.js = ('bootstrap4_datetime/js/moment.min.js', 
+                           'bootstrap4_datetime/js/bootstrap-datetimepicker.min.js')
                 lang = translation.get_language()
                 if lang:
                     lang = lang.lower()
-                    #There is language name that length>2 *or* contains uppercase.
+                    # There is language name that length>2 *or* contains uppercase.
                     lang_map = {
                         'ar-ma': 'ar-ma',
                         'en-au': 'en-au',
@@ -45,8 +45,11 @@ class DateTimePicker(DateTimeInput):
                     if len(lang) > 2:
                         lang = lang_map.get(lang, 'en-us')
                     if lang not in ('en', 'en-us'):
-                        yield 'bootstrap4_datetime/js/locales/bootstrap-datetimepicker.%s.js' % (lang)
+                        self.js += ('bootstrap4_datetime/js/locales/bootstrap-datetimepicker.{}.js'.format(lang),)
 
+            def __getitem__(self, obj):
+                return self.js[obj]
+            
         js = JsFiles()
         css = {'all': ('bootstrap4_datetime/css/bootstrap-datetimepicker.min.css',), }
 
